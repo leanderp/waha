@@ -1,0 +1,26 @@
+services:
+  waha:
+    image: devlikeapro/waha:latest
+    container_name: waha-core
+    restart: unless-stopped
+
+    # If DNS resolution for web.whatsapp.com fails, keep these resolvers enabled.
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+
+    ports:
+      - "127.0.0.1:3000:3000/tcp"
+
+    volumes:
+      - "./sessions:/app/.sessions"
+      - "./media:/app/.media"
+
+    env_file:
+      - .env.core
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"

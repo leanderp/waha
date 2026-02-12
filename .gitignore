@@ -1,6 +1,7 @@
 tmp/*
 src/core/engines/gows/proto
 .env
+.env.core
 .envs/*
 *.heapsnapshot
 .yarn
